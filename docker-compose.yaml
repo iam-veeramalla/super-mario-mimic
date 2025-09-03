@@ -1,0 +1,21 @@
+services:
+  mario-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: mario-dev
+    ports:
+      - "3000:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+
+  mario-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: mario-prod
+    ports:
+      - "8080:80"
+    restart: unless-stopped
